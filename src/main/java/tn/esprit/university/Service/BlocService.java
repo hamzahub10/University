@@ -29,12 +29,10 @@ public class BlocService implements IBlocService {
         List<chambre> chambres = chambreRepository.findByNumeroChambreIn(numChambre);
         for (chambre ch : chambres) {
             ch.setBlocs(bloc);
-            chambreRepository.save(ch);
+            assert bloc != null;
+            blocRepository.save(bloc);
         }
 
-        assert bloc != null;
-        bloc.setChambres(chambres);
-        blocRepository.save(bloc);
 
         return bloc;
     }

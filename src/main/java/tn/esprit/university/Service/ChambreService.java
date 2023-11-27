@@ -32,4 +32,9 @@ public class ChambreService implements IChambreService{
     public long nbrChambreParTypeEtBloc(TypeChambre typeChambre, long idBloc) {
         return chambreRepository.countByTypeCAndBlocs_Id(typeChambre,idBloc);
     }
+
+    @Override
+    public List<chambre> getChambresNonReserveParNomUniversiteEtTypeChambre(String nomUniversite, TypeChambre type) {
+        return chambreRepository.findChambresNonReservees(nomUniversite,type);
+    }
 }

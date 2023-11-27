@@ -29,9 +29,14 @@ public class chambreController {
             public List<chambre> getChambresParNomBloc(@PathVariable  String nombloc) {
         return chambreService.getChambresParNomBloc(nombloc);
     }
-        @GetMapping("/nbrChambreParTypeEtBloc/{type},{idbloc}")
+        @GetMapping("/nbrChambreParTypeEtBloc/{type}/{idbloc}")
                 public long nbrChambreParTypeEtBloc(@PathVariable TypeChambre type,@PathVariable long idbloc){
     return chambreService.nbrChambreParTypeEtBloc(type,idbloc);
+        }
+
+        @GetMapping("getChambresNonReserveParNomUniversiteEtTypeChambre/{nomUniversite}/{TypeChambre}")
+    public List<chambre> getChambresNonReserveParNomUniversiteEtTypeChambre(@PathVariable String nomUniversite,@PathVariable  TypeChambre TypeChambre){
+    return chambreService.getChambresNonReserveParNomUniversiteEtTypeChambre(nomUniversite,TypeChambre);
         }
     }
 

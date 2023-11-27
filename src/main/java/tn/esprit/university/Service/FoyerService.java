@@ -52,7 +52,6 @@ public class FoyerService implements IFoyerService {
     }
     public Foyer ajouterFoyerEtAffecterAUniversite(Foyer foyer, long idUniversite) {
         universite universite = universiteRepository.findById(idUniversite).orElse(null);
-
         if (universite != null) {
             foyer.setUniversity(universite);
             Foyer addedFoyer = foyerRepository.save(foyer);

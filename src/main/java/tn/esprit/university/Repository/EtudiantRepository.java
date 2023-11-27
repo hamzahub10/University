@@ -5,6 +5,7 @@ import tn.esprit.university.Etudiant;
 
 public interface EtudiantRepository extends JpaRepository<Etudiant,Long> {
     Etudiant findByNomEtAndPrenomEt(String nomEt, String prenomEt);
+    Etudiant findByCin(long cin);
 
 
 }

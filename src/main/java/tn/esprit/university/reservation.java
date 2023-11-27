@@ -19,7 +19,7 @@ import java.util.Set;
 public class reservation implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private String idReservation;
     private Date anneuniversitaire;
     private Boolean estValide;
 

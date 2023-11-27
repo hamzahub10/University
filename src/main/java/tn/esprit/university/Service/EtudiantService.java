@@ -59,7 +59,8 @@ public class EtudiantService implements IEtudiantService{
     @Override
     public Etudiant affecterEtudiantAReservation(String nomEt, String prenomEt, String idReservation) {
         Etudiant etudiant=etudiantRepository.findByNomEtAndPrenomEt(nomEt,prenomEt);
-        reservation reservation=reservationRepository.findById(Long.valueOf(idReservation)).get();
+        reservation reservation=reservationRepository.findByIdReservation(idReservation);
+
         List<reservation> reservations=new ArrayList<>();
         if (etudiant.getReservations()!=null){
             reservations=etudiant.getReservations();
