@@ -43,7 +43,7 @@ public Etudiant addEtudiant(@RequestBody Etudiant e){
     public List<Etudiant> addEtudiants (@RequestBody List<Etudiant> etudiants){
     return etudiantService.addEtudiants(etudiants);
 }
-@PutMapping("/affecterEtudiantAReservation/{nomEt},{prenomEt},{idReservation}")
+@PutMapping("/affecterEtudiantAReservation/{nomEt}/{prenomEt}/{idReservation}")
     public Etudiant affecterEtudiantAReservation(@PathVariable String nomEt,@PathVariable String prenomEt,@PathVariable String idReservation){
    return etudiantService.affecterEtudiantAReservation(nomEt,prenomEt,idReservation);
 

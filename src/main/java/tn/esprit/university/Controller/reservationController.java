@@ -37,7 +37,7 @@ public class reservationController {
         return reservationService.ajouterReservation(idChambre, cinEtudiant);
     }
 
-    @PostMapping("/annulerReservation{cinEtudiant}")
+    @PostMapping("/annulerReservation/{cinEtudiant}")
     public reservation annulerReservation(@PathVariable long cinEtudiant) {
         return reservationService.annulerReservation(cinEtudiant);
     }
