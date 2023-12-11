@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import tn.esprit.university.Repository.EtudiantRepository;
 import tn.esprit.university.Etudiant;
 import tn.esprit.university.Repository.ReservationRepository;
-import tn.esprit.university.reservation;
+import tn.esprit.university.Reservation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,9 +59,9 @@ public class EtudiantService implements IEtudiantService{
     @Override
     public Etudiant affecterEtudiantAReservation(String nomEt, String prenomEt, String idReservation) {
         Etudiant etudiant=etudiantRepository.findByNomEtAndPrenomEt(nomEt,prenomEt);
-        reservation reservation=reservationRepository.findByIdReservation(idReservation);
+        Reservation reservation=reservationRepository.findById(idReservation);
 
-        List<reservation> reservations=new ArrayList<>();
+        List<Reservation> reservations=new ArrayList<>();
         if (etudiant.getReservations()!=null){
             reservations=etudiant.getReservations();
         }

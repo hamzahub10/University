@@ -27,5 +27,5 @@ public class Etudiant implements Serializable {
 
     @ManyToMany
     @JsonIgnore
-    private List<reservation> reservations;
+    private List<Reservation> reservations;
 }

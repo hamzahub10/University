@@ -6,7 +6,6 @@ import lombok.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 
 @Entity
@@ -16,10 +15,10 @@ import java.util.Set;
 @NoArgsConstructor
 @Builder
 @ToString
-public class reservation implements Serializable {
+public class Reservation implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String idReservation;
+    private String id;
     private Date anneuniversitaire;
     private Boolean estValide;
 

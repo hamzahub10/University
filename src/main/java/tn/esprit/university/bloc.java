@@ -15,6 +15,7 @@ import java.util.Set;
 @Builder
 @ToString
 
+
 public class bloc implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

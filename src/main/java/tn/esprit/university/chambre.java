@@ -21,12 +21,13 @@ public class chambre implements Serializable
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idchambre;
     private long numeroChambre;
+    //@Enumerated(EnumType.STRING)
     private TypeChambre typeC;
     @ManyToOne
     @JsonIgnore
     bloc blocs;
     @OneToMany(cascade = CascadeType.ALL)
-    private Set<reservation> reservations;
+    private Set<Reservation> reservations;
 
 
 }

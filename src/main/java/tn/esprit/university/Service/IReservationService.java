@@ -1,15 +1,15 @@
 package tn.esprit.university.Service;
 
-import tn.esprit.university.reservation;
+import tn.esprit.university.Reservation;
 
 import java.util.Date;
 import java.util.List;
 
 public interface IReservationService {
-    reservation addReservation (reservation reservation);
-    public List<reservation> getReservationParAnneeUniversitaire(Date date );
-    public reservation ajouterReservation (long idChambre, long cinEtudiant) ;
-    public reservation annulerReservation (long cinEtudiant) ;
-    public List<reservation> getReservationParAnneeUniversitaireEtNomUniversite( Date anneeUniversite,
+    Reservation addReservation (Reservation reservation);
+    public List<Reservation> getReservationParAnneeUniversitaire(Date date );
+    public Reservation ajouterReservation (long idChambre, long cinEtudiant) ;
+    public Reservation annulerReservation (long cinEtudiant) ;
+    public List<Reservation> getReservationParAnneeUniversitaireEtNomUniversite( Date anneeUniversite,
                                                                                  String nomUniversite) ;
 }

@@ -1,7 +1,9 @@
 package tn.esprit.university.Service;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import tn.esprit.university.Repository.ChambreRepository;
 import tn.esprit.university.TypeChambre;
@@ -12,7 +14,7 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-
+@Slf4j
 
 public class ChambreService implements IChambreService{
 
@@ -37,4 +39,19 @@ public class ChambreService implements IChambreService{
     public List<chambre> getChambresNonReserveParNomUniversiteEtTypeChambre(String nomUniversite, TypeChambre type) {
         return chambreRepository.findChambresNonReservees(nomUniversite,type);
     }
+    @Scheduled(cron = "*/30 * * * * *")
+    public void getChambreNonReservees(){
+        log.info("Liste des chambres non reservées :"+chambreRepository.getChambresNonReservees().toString());
+    }
+    @Scheduled(cron = "*/30 * * * * *")
+    void listeChambresParBloc(){
+        log.info("Liste des chambres par bloc :" +chambreRepository.getAllChambresGroupedByBloc().toString());
+    }
+    @Scheduled(cron = "*/30 * * * * *")
+    void pourcentageChambresParTypeChambre() {
+        List<Object[]> result = chambreRepository.pourcentageChambresParTypeChambre();
+        log.info("Pourcentage des chambres par type : " + result);
+    }
+
+
 }

@@ -6,8 +6,9 @@ import tn.esprit.university.Etudiant;
 import tn.esprit.university.Repository.ChambreRepository;
 import tn.esprit.university.Repository.EtudiantRepository;
 import tn.esprit.university.Repository.ReservationRepository;
+import tn.esprit.university.Reservation;
 import tn.esprit.university.chambre;
-import tn.esprit.university.reservation;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -23,23 +24,23 @@ public class ReservationService implements IReservationService {
 
 
     @Override
-    public reservation addReservation(reservation reservation) {
+    public Reservation addReservation(Reservation reservation) {
         return reservationRepository.save(reservation);
     }
 
     @Override
-    public List<reservation> getReservationParAnneeUniversitaire(Date date) {
+    public List<Reservation> getReservationParAnneeUniversitaire(Date date) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         return reservationRepository.getReservationByYear(calendar.get(Calendar.YEAR));
     }
 
     @Override
-    public reservation ajouterReservation(long idChambre, long cinEtudiant) {
+    public Reservation ajouterReservation(long idChambre, long cinEtudiant) {
         chambre chambre = chambreRepository.findById(idChambre).orElse(null);
         Etudiant etudiant = etudiantRepository.findByCin(cinEtudiant);
 
-        reservation reservation = null;
+        Reservation reservation = null;
 
         if (chambre != null && etudiant != null) {
             int maxCapacity;
@@ -59,8 +60,8 @@ public class ReservationService implements IReservationService {
             }
 
             if (chambre.getReservations().size() < maxCapacity) {
-                reservation = new reservation();
-                reservation.setIdReservation(chambre.getNumeroChambre() + "-" + chambre.getBlocs().getNomBloc() + "-" + 2023);
+                reservation = new Reservation();
+                reservation.setId(chambre.getNumeroChambre() + "-" + chambre.getBlocs().getNomBloc() + "-" + 2023);
                 reservation.setEstValide(true);
 
                 chambre.getReservations().add(reservation);
@@ -77,8 +78,8 @@ public class ReservationService implements IReservationService {
     }
 
     @Override
-    public reservation annulerReservation(long cinEtudiant) {
-        reservation reservation =reservationRepository.findByEtudiant_Cin(cinEtudiant);
+    public Reservation annulerReservation(long cinEtudiant) {
+        Reservation reservation =reservationRepository.findByEtudiant_Cin(cinEtudiant);
         chambre chambre= chambreRepository.findByReservations(reservation);
         reservation.setEstValide(false);
         reservation.getEtudiants().clear();
@@ -89,7 +90,7 @@ public class ReservationService implements IReservationService {
     }
 
     @Override
-    public List<reservation> getReservationParAnneeUniversitaireEtNomUniversite(Date anneeUniversite, String nomUniversite) {
+    public List<Reservation> getReservationParAnneeUniversitaireEtNomUniversite(Date anneeUniversite, String nomUniversite) {
         return reservationRepository.getReservationParAnneeUniversitaireEtNomUniversite(anneeUniversite,
                 nomUniversite);
     }
