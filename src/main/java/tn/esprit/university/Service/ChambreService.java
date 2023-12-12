@@ -39,11 +39,11 @@ public class ChambreService implements IChambreService{
     public List<chambre> getChambresNonReserveParNomUniversiteEtTypeChambre(String nomUniversite, TypeChambre type) {
         return chambreRepository.findChambresNonReservees(nomUniversite,type);
     }
-    @Scheduled(cron = "*/30 * * * * *")
+    @Scheduled(cron = "*/10 * * * * *")
     public void getChambreNonReservees(){
         log.info("Liste des chambres non reservées :"+chambreRepository.getChambresNonReservees().toString());
     }
-    @Scheduled(cron = "*/30 * * * * *")
+    @Scheduled(cron = "*/20 * * * * *")
     void listeChambresParBloc(){
         log.info("Liste des chambres par bloc :" +chambreRepository.getAllChambresGroupedByBloc().toString());
     }
